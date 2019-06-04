@@ -6,3 +6,8 @@ export(SOGC)
 export(SOGC_DP)
 export(simuMOGC)
 export(simuSOGC)
+
+useDynLib(MOGC)
+import(RcppEigen)
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
