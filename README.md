@@ -54,12 +54,6 @@ res_sogc <- SOGC(Y, U1, K=K, center=FALSE,
                  seed=123, BernoulliWeighted=TRUE,
                  MH_ind=0, pi_j_prop_n=10)
 
-ave_mu_sogc <- sapply(1:3, function(k)
-  abs(apply(res_sogc$MU_store[, k, ], 2, mean)))
-mu_max_sogc <- apply(ave_mu_sogc, 1, max)
-sogc_rank <- sort_feature(res_sogc$feature_select_prob, mu_max_sogc)
-AUC_sogc <- auc(roc(factor(Sdata$geneLabel), sogc_rank))
-
 library(mclust)
 (ARI_sogc <- adjustedRandIndex(res_sogc$label_map,Sdata$label))
 
